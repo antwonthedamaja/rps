@@ -1,2 +1,2 @@
 # RPS
-Rock paper scissors project
+Odin Project Rock Paper Scissors project
