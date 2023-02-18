@@ -1,3 +1,57 @@
-body {
-    background-color: black;
+html {
+    font-size: 16px;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-evenly;
+    margin: .5rem;
+}
+
+.logo>:first-child {
+    font-size: 8rem;
+}
+
+.logo>:nth-child(2) {
+    font-size: 8rem;
+}
+
+.logo>:last-child {
+    font-size: 8rem;
+}
+
+
+#button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+button {
+    display: flex;
+    width: auto;
+    height: 30rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 10rem;
+    background-color: rgb(3, 255, 3);
+    border: .25rem solid black;
+    padding: 0rem 15rem;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: center;
+}
+
+div.rock {
+    padding-right: 1rem;
+}
+
+div.paper {
+    padding-right: 1rem;
+}
+
+div.scissors {
+    padding-right: 1rem;
 }

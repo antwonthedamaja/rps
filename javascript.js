@@ -1,5 +1,7 @@
+
+
 function getComputerChoice() {
-    let num = Math.floor(Math.random() * 3);
+    let num = Math.floor(Math.random() * 3); // 0, 1, 2
     if (num === 0) {
         return "rock";
     } else if (num === 1) {
@@ -39,27 +41,34 @@ function rpsRound(computerChoice, playerChoice) {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let computerChoice = getComputerChoice();
-        let playerChoice = prompt("Rock! Paper! Scissors! Shoot").toLowerCase();
-        let roundScore = rpsRound(computerChoice, playerChoice);
-        if (roundScore === "lose") {
-            computerScore++;
-        } else if (roundScore === "win") {
-            playerScore++;
-        } else {
-        }
-    }
-    if (playerScore === computerScore) {
-        alert("Tie game!");
-    } else if (playerScore > computerScore) {
-        alert("Player wins!");
-    } else {
-        alert("Computer wins! Too bad!")
-    }
-}
+// function game() {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     for (let i = 0; i < 5; i++) {
+//         let computerChoice = getComputerChoice();
+//         let playerChoice = prompt("Rock paper scissors shoot!").toLowerCase();
+//         while (playerChoice !== "rock" && playerChoice !== "scissors" && playerChoice !== "paper") {
+//             if (playerChoice !== "rock" && playerChoice !== "scissors" && playerChoice !== "paper") {
+//                 alert("Invalid answer!");
+//                 playerChoice = prompt("Rock paper scissors shoot!").toLowerCase();
+//             } else {
+//                 break;
+//             }
+//         }
+//         let roundScore = rpsRound(computerChoice, playerChoice);
+//         if (roundScore === "lose") {
+//             computerScore++;
+//         } else if (roundScore === "win") {
+//             playerScore++;
+//         }
+//     }
+//     if (playerScore === computerScore) {
+//         alert("Tie game!");
+//     } else if (playerScore > computerScore) {
+//         alert("Player wins!");
+//     } else {
+//         alert("Computer wins! Too bad!")
+//     }
+// }
 
-let playerScore = 0;
-let computerScore = 0;
-game();
+// game();
