@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
 </head>
 <body>
     <div class="logo">
@@ -14,20 +14,20 @@
         <div>Paper!</div>
         <div>Scissors!</div>
     </div>
-    <div id="button">
-        <button type="button">SHOOT!</button>
+    <div class="submitButton">
+        <button type="button" id="submit">SHOOT!</button>
     </div>
-    <div class="checkbox">
+    <div class="radioButtons">
         <div class="rock">
-            <input type="checkbox" id="rock" value="Rock">
+            <input type="radio" id="rock" name="selection" value="Rock">
             <label for="rock">Rock</label>
         </div>
         <div class="paper">
-            <input type="checkbox" id="paper" value="Paper">
+            <input type="radio" id="paper" name="selection" value="Paper">
             <label for="paper">Paper</label>
         </div>
         <div class="scissors">
-            <input type="checkbox" id="scissors" value="Scissors">
+            <input type="radio" id="scissors" name="selection" value="Scissors">
             <label for="scissors">Scissors</label>
         </div>
     </div>

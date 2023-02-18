@@ -1,4 +1,21 @@
+const buttons = document.querySelectorAll('input[type=radio]');
+const submit = document.querySelector('#submit');
+let playerChoice;
+let computerChoice;
+let i = 0;
+let cScore = 0;
+let pScore = 0;
 
+buttons.forEach(button => {
+    button.addEventListener('change', () => {
+       playerChoice = button.id;
+    })
+});
+
+submit.addEventListener('click', () => {
+    computerChoice = getComputerChoice();
+    rpsRound(computerChoice, playerChoice);
+});
 
 function getComputerChoice() {
     let num = Math.floor(Math.random() * 3); // 0, 1, 2
@@ -14,30 +31,30 @@ function getComputerChoice() {
 function rpsRound(computerChoice, playerChoice) {
     if (computerChoice === playerChoice) {
         alert("It was a tie!");
-        return "tie";
+        i++;
     } else if (computerChoice === "scissors" &&
                playerChoice === "paper") {
         alert("Computer wins! Scissors beats paper!");
-        return "lose";
+        i++;
     } else if (computerChoice === "rock" &&
                playerChoice === "scissors") {
         alert("Computer wins! Rock beats scissors!");
-        return "lose";
+        i++;
     } else if (computerChoice === "paper" &&
                playerChoice === "rock") {
         alert("Computer wins! Paper beats rock!");
-        return "lose";
+        i++;
     } else if (computerChoice === "scissors" &&
                playerChoice === "rock") {
         alert("Player wins! Rock beats scissors!");
-        return "win";
+        i++;
     } else if (computerChoice === "rock" &&
                playerChoice === "paper") {
         alert("Player wins! Paper beats rock!");
-        return "win";
+        i++;
     } else {
         alert("Player wins! Scissors beats paper!");
-        return "win";
+        i++;
     }
 }
 
