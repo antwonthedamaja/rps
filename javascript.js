@@ -1,5 +1,8 @@
 const buttons = document.querySelectorAll('input[type=radio]');
 const submit = document.querySelector('#submit');
+const pCounter = document.querySelector('#pCounter');
+const cCounter = document.querySelector('#cCounter');
+
 let playerChoice;
 let computerChoice;
 let i = 0;
@@ -14,8 +17,88 @@ buttons.forEach(button => {
 
 submit.addEventListener('click', () => {
     computerChoice = getComputerChoice();
-    rpsRound(computerChoice, playerChoice);
+    if (playerChoice) {
+    game(computerChoice, playerChoice);
+    }
 });
+
+function updateCounter() {
+    pCounter.innerHTML = pScore;
+    cCounter.innerHTML = cScore;
+}
+
+function game(computerChoice, playerChoice) {
+    if (computerChoice === playerChoice) {
+        submit.textContent = "TIE!";
+        submit.style.backgroundColor = '#ffff00';
+    } else if (computerChoice === "scissors" &&
+               playerChoice === "paper") {
+        submit.textContent = "YOU LOSE!";
+        submit.style.backgroundColor = '#ff0303';
+        cScore++;
+    } else if (computerChoice === "rock" &&
+               playerChoice === "scissors") {
+        submit.textContent = "YOU LOSE!";
+        submit.style.backgroundColor = '#ff0303';
+        cScore++;
+    } else if (computerChoice === "paper" &&
+               playerChoice === "rock") {
+        submit.textContent = "YOU LOSE!";
+        submit.style.backgroundColor = '#ff0303';
+        cScore++;
+    } else if (computerChoice === "scissors" &&
+               playerChoice === "rock") {
+        submit.textContent = "YOU WIN!";
+        pScore++;
+    } else if (computerChoice === "rock" &&
+               playerChoice === "paper") {
+        submit.textContent = "YOU WIN!";
+        pScore++;
+    } else {
+        submit.textContent = "YOU WIN!";
+        pScore++;
+    } 
+    i++;
+    updateCounter();
+    if (i !== 5) {
+        setTimeout(() => {
+            submit.textContent = "SHOOT!";
+            submit.style.backgroundColor = '#18ff03';
+        }, 1500);
+    } else if (i === 5 && pScore > cScore) {
+        submit.textContent = "GAME WON!";
+        submit.style.backgroundColor = '#18ff03';
+        setTimeout(() => {
+            i = 0;
+            pScore = 0;
+            cScore = 0;
+            submit.textContent = "SHOOT!";
+            updateCounter();
+        }, 3000);
+    } else if (i === 5 && pScore < cScore) {
+        submit.textContent = "GAME LOST!";
+        submit.style.backgroundColor = '#ff0303';
+        setTimeout(() => {
+            i = 0;
+            pScore = 0;
+            cScore = 0;
+            submit.textContent = "SHOOT!";
+            submit.style.backgroundColor = '#18ff03';
+            updateCounter();
+        }, 3000);
+    } else if (i === 5 && pScore === cScore) {
+        submit.textContent = "GAME TIE!";
+        submit.style.backgroundColor = '#ffff00';
+        setTimeout(() => {
+            i = 0;
+            pScore = 0;
+            cScore = 0;
+            submit.textContent = "SHOOT!";
+            submit.style.backgroundColor = '#18ff03';
+            updateCounter();
+        }, 3000);
+    }
+}
 
 function getComputerChoice() {
     let num = Math.floor(Math.random() * 3); // 0, 1, 2
@@ -27,65 +110,3 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-
-function rpsRound(computerChoice, playerChoice) {
-    if (computerChoice === playerChoice) {
-        alert("It was a tie!");
-        i++;
-    } else if (computerChoice === "scissors" &&
-               playerChoice === "paper") {
-        alert("Computer wins! Scissors beats paper!");
-        i++;
-    } else if (computerChoice === "rock" &&
-               playerChoice === "scissors") {
-        alert("Computer wins! Rock beats scissors!");
-        i++;
-    } else if (computerChoice === "paper" &&
-               playerChoice === "rock") {
-        alert("Computer wins! Paper beats rock!");
-        i++;
-    } else if (computerChoice === "scissors" &&
-               playerChoice === "rock") {
-        alert("Player wins! Rock beats scissors!");
-        i++;
-    } else if (computerChoice === "rock" &&
-               playerChoice === "paper") {
-        alert("Player wins! Paper beats rock!");
-        i++;
-    } else {
-        alert("Player wins! Scissors beats paper!");
-        i++;
-    }
-}
-
-// function game() {
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     for (let i = 0; i < 5; i++) {
-//         let computerChoice = getComputerChoice();
-//         let playerChoice = prompt("Rock paper scissors shoot!").toLowerCase();
-//         while (playerChoice !== "rock" && playerChoice !== "scissors" && playerChoice !== "paper") {
-//             if (playerChoice !== "rock" && playerChoice !== "scissors" && playerChoice !== "paper") {
-//                 alert("Invalid answer!");
-//                 playerChoice = prompt("Rock paper scissors shoot!").toLowerCase();
-//             } else {
-//                 break;
-//             }
-//         }
-//         let roundScore = rpsRound(computerChoice, playerChoice);
-//         if (roundScore === "lose") {
-//             computerScore++;
-//         } else if (roundScore === "win") {
-//             playerScore++;
-//         }
-//     }
-//     if (playerScore === computerScore) {
-//         alert("Tie game!");
-//     } else if (playerScore > computerScore) {
-//         alert("Player wins!");
-//     } else {
-//         alert("Computer wins! Too bad!")
-//     }
-// }
-
-// game();
